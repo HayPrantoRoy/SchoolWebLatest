@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .gallery-preview {
+      display: flex;
+      align-items: center;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gallery-preview img {
+      width: 160px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid #fff;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+      margin-left: -30px;
+    }
+
+    .gallery-preview img:first-child {
+      margin-left: 0;
+    }
+
+    .gallery-preview img:hover {
+      transform: scale(1.07) rotate(2deg);
+      z-index: 2;
+    }
+
+    /* Dynamic +N Badge */
+    .gallery-count {
+      width: 160px;
+      height: 110px;
+      background: rgba(0,0,0,0.7);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: -30px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+      backdrop-filter: blur(4px);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      position: relative;
+    }
+
+    .modal-content img {
+      width: 100%;
+      max-height: 85vh;
+      border-radius: 14px;
+      object-fit: contain;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+    }
+
+    .close {
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      font-size: 40px;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .close:hover { color: #ff4b2b; }
+
+    /* Navigation */
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 42px;
+      cursor: pointer;
+      user-select: none;
+      padding: 12px;
+      background: rgba(0,0,0,0.4);
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+
+    .nav-btn:hover { background: rgba(0,0,0,0.6); }
+
+    .prev { left: -70px; }
+    .next { right: -70px; }
+
+    .gallery-header h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 10px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .gallery-header h2::after {
+      content: "";
+      width: 60%;
+      height: 4px;
+      background: skyblue;
+      display: block;
+      margin: 8px auto 0;
+      border-radius: 2px;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="bg-animation">
+            <div class="floating-orb"></div>
+            <div class="floating-orb"></div>
+            <div class="floating-orb"></div>
+            <div class="floating-orb"></div>
+            <div class="geometric-shape"></div>
+            <div class="geometric-shape"></div>
+            <div class="wave-pattern"></div>
+        </div>
+
+        <div class="logo-area">
+            <img src="img/logo.png" alt="School Logo">
+            <div class="school-name">
+                <h3>স্কুল ম্যানেজমেন্ট সিস্টেম</h3>
+                <h2>School Management System</h2>
+            </div>
+        </div>
+    </header>
+
+
+
+
+    <nav>
+        <button class="mobile-toggle" onclick="toggleMenu()">☰</button>
+        <div class="nav-container" id="navMenu">
+            <a href="index.html">হোম পেজ</a>
+            <a href="teacher.html">শিক্ষক তালিকা</a>
+            <a href="galary.html">গ্যালারি</a>
+            <a href="notice.html">স্কুল প্রশাসন</a>
+            <a href="notice.html">প্রাতিষ্ঠানিক কার্যক্রম</a>
+            <a href="notice.html">অন্যান্য তথ্য</a>
+            <a href="notice.html">যোগাযোগ</a>
+            <a href="notice.html">ভর্তি তথ্য</a>
+            <a href="notice.html">রেজাল্ট অনুসন্ধান</a>
+            <a href="notice.html">সংবাদ ও বিজ্ঞপ্তি</a>
+        </div>
+    </nav>
+
+
+    <!-- News Bar -->
+    <div class="news-bar">
+        <div class="news-title">নোটিশ বোর্ড</div>
+        <div class="news-text" id="typewriter"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Left Column -->
+        <div class="left-col">
+            <!-- Image Slider -->
+            <div class="gallery-header">
+    <h2>প্রতিষ্ঠানের গ্যালারি</h2><br><br>
+  </div>
+  <!-- Preview thumbnails -->
+  <div class="gallery-preview" id="galleryPreview">
+    <img src="img/logo.png" alt="img1">
+    <img src="img/headmaster.jpg" alt="img2">
+    <img src="img/school3.jpg" alt="img3">
+    <img src="img/investigation.png" alt="img4">
+    <img src="img/school3.jpg" alt="img5">
+    <img src="img/logo.png" alt="img6">
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="galleryModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <span class="nav-btn prev" onclick="changeSlide(-1)">&#10094;</span>
+      <img id="modalImage" src="">
+      <span class="nav-btn next" onclick="changeSlide(1)">&#10095;</span>
+    </div>
+  </div>
+
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-col">
+            
+ <div class="teacher-card">
+    <img src="img/headmaster.jpg" alt="Teacher Photo">
+    <div class="teacher-info">
+      <h3>প্রধান শিক্ষকের নাম</h3>
+      <p>প্রধান শিক্ষক (ভারপ্রাপ্ত)</p>
+      <p>প্রতিষ্ঠানের নাম</p>
+    </div>
+  </div>
+            <div class="sidebar-container">
+                <div class="info-card notice-card">
+                    <div class="card-title">
+                        <img src="img/warning.png" alt="Mood Board Icon" width="40px"
+                            style="vertical-align: middle; margin-right: 10px; ">
+                        নোটিশ বোর্ড
+                    </div>
+                    <div class="card-details">
+                        <div class="notice-item">
+                            <div class="notice-date"> <img src="img/schedule.png" alt="Mood Board Icon" width="20px"
+                                    style="vertical-align: middle; ">
+                                ১৯ ডিসেম্বর ২০২৫</div>
+                            <div class="notice-text">
+                                ২০২৫ শিক্ষাবর্ষে ৬ষ্ঠ শ্রেণির ভর্তি নোটিশ</div>
+                        </div>
+                        <div class="notice-item">
+                            <div class="notice-date">
+                                <img src="img/schedule.png" alt="Mood Board Icon" width="20px"
+                                    style="vertical-align: middle; ">
+                                ১৫ ডিসেম্বর ২০২৫
+                            </div>
+                            <div class="notice-text">বার্ষিক পরীক্ষার সময়সূচি প্রকাশ</div>
+                        </div>
+                    </div>
+                </div>
+
+
+              
+
+
+
+                <div class="info-card exam-card">
+                    <div class="card-title">
+                        <img src="img/exam.png" alt="Mood Board Icon" width="35px" style="vertical-align: middle;">
+                        পরীক্ষার রুটিন
+                    </div>
+                    <div class="card-details">
+                        <div class="exam-schedule">
+                            <div class="exam-row">
+                                <span class="exam-date">২৫ ডিসেম্বর</span>
+                                <span class="exam-subject">বাংলা</span>
+                                <span class="exam-time">সকাল ৯টা</span>
+                            </div>
+                            <div class="exam-row">
+                                <span class="exam-date">২৭ ডিসেম্বর</span>
+                                <span class="exam-subject">গণিত</span>
+                                <span class="exam-time">সকাল ৯টা</span>
+                            </div>
+                            <div class="exam-row">
+                                <span class="exam-date">২৯ ডিসেম্বর</span>
+                                <span class="exam-subject">ইংরেজি</span>
+                                <span class="exam-time">সকাল ৯টা</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card result-card">
+                    <div class="card-title">
+                        <img src="img/investigation.png" alt="Mood Board Icon" width="35px" style="vertical-align: middle;">
+                        পরীক্ষার ফলাফল
+                    </div>
+                    <div class="card-details">
+                        <div class="result-stats">
+                            <div class="result-item">
+                                <div class="result-label">পাস</div>
+                                <div class="result-number">৯৮%</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">জিপিএ-৫</div>
+                                <div class="result-number">৮৫</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">মোট ছাত্র</div>
+                                <div class="result-number">৩৫০</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Calendar -->
+            <div class="calendar">
+                <div class="calendar-header">
+                    <button class="calendar-nav" onclick="changeMonth(-1)">❮</button>
+                    <span id="monthYear"></span>
+                    <button class="calendar-nav" onclick="changeMonth(1)">❯</button>
+                </div>
+                <table>
+                    <tr>
+                        <th>রবি</th>
+                        <th>সোম</th>
+                        <th>মঙ্গল</th>
+                        <th>বুধ</th>
+                        <th>বৃহ</th>
+                        <th>শুক্র</th>
+                        <th>শনি</th>
+                    </tr>
+                    <tbody id="calendarBody">
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Attendance Section -->
+
+
+            <!-- Location Section -->
+            <div class="location-section">
+
+                <div class="location-content">
+                    <div class="map-placeholder">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2921150.088064519!2d88.08442389890225!3d23.685009763037288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3751ab5c1bcbba3f%3A0x4a7885f704ec5f26!2sBangladesh!5e0!3m2!1sen!2sbd!4v1692101234567"
+                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <p>School Location</p>
+                </div>
+            </div>
+
+
+            <!-- Visitors Counter -->
+
+        </div>
+    </main>
+
+    <footer>
+        <!-- Left Side -->
+        <div class="footer-left">
+            <img src="http://static.vecteezy.com/system/resources/previews/039/607/001/non_2x/school-logo-design-template-free-vector.jpg"
+                alt="School Logo"><br>
+            <p>© 2025 - All Rights Reserved</p>
+        </div>
+
+        <!-- Middle Side -->
+        <div class="footer-middle">
+            <h3>Our Address</h3>
+            <p>School Name</p>
+            <p>School Address</p>
+            <p><strong>Tel:</strong> 017XXXXXXXXXX</p>
+            <p><strong>Email:</strong> Name@gmail.com</p>
+        </div>
+
+        <!-- Right Side -->
+        <div class="footer-right">
+            <ul class="footer-menu">
+                <li>হোম পেজ</li>
+                <li>প্রাতিষ্ঠানিক কার্যক্রম</li>
+                <li>ভর্তি তথ্য</li>
+            </ul>
+            <ul class="footer-menu">
+                <li>স্কুল প্রশাসন</li>
+                <li>আমাদের কথা</li>
+                <li>যোগাযোগ</li>
+            </ul>
+            <ul class="footer-menu">
+                <li>Developed By</li>
+                <img src="img/techshilpo.png">
+            </ul>
+            <ul class="footer-menu">
+                <li>Designed by</li>
+                <p>Pranto Roy</p>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+<script src="js/script.js"></script>
+
+      <script>
+    const preview = document.getElementById("galleryPreview");
+    const modal = document.getElementById("galleryModal");
+    const modalImage = document.getElementById("modalImage");
+    let previewImages = preview.querySelectorAll("img");
+    let currentIndex = 0;
+
+    // Add +N badge dynamically if more than 4 images
+    function updatePreview() {
+      const imgs = preview.querySelectorAll("img");
+      if (imgs.length > 4) {
+        imgs.forEach((img, i) => {
+          img.style.display = (i < 4) ? "block" : "none";
+        });
+        const count = document.createElement("div");
+        count.className = "gallery-count";
+        count.innerText = "+" + (imgs.length - 4);
+        preview.appendChild(count);
+      }
+    }
+
+    updatePreview();
+
+    // Open modal on click
+    preview.addEventListener("click", e => {
+      if (e.target.tagName === "IMG") {
+        currentIndex = [...previewImages].indexOf(e.target);
+        openModal();
+      } else {
+        currentIndex = 0;
+        openModal();
+      }
+    });
+
+    function openModal() {
+      modal.style.display = "flex";
+      showImage();
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    function changeSlide(step) {
+      currentIndex = (currentIndex + step + previewImages.length) % previewImages.length;
+      showImage();
+    }
+
+    function showImage() {
+      modalImage.src = previewImages[currentIndex].src;
+    }
+  </script>
+</html>

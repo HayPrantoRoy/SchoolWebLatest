@@ -1,0 +1,877 @@
+ @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+ @import url('https://fonts.maateen.me/solaiman-lipi/font.css');
+ @import url("https://lipilikhi.github.io/fonts/AnekBangla.min.css");
+ @import url('https://fonts.maateen.me/baloo-da-2/font.css');
+ @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+ body {
+     font-size: 1.15em;
+     font-family: "myriadpro-regular", Helvetica, sans-serif, Tahoma, SolaimanLipi, Kalpurush, Shonar Bangla, Arial, Arial, sans-serif;
+     color: #222;
+     background: white;
+     padding: 10px;
+ }
+
+ /* Header */
+header {
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    z-index: 1;
+    
+    /* fixed header height */
+    height: 180px;
+
+    /* make the background image cover full width */
+    background-image: url("../img/background.jpg");
+    background-position: center center;
+    background-size: 100% 200px; /* stretch width to 100%, height fixed to 180px */
+    background-repeat: no-repeat;
+
+    /* fallback color */
+    background-color: #f5f5f5;
+}
+
+ .logo-area {
+     position: relative;
+     /* stays above background */
+     display: flex;
+     /* logo + text side by side */
+     align-items: center;
+     /* vertically centered */
+     justify-content: center;
+     /* center whole block */
+     gap: 15px;
+     /* spacing between logo and text */
+     z-index: 2;
+     /* make sure it’s above animation */
+     color: #222;
+     /* text color */
+     text-align: left;
+     /* text aligned left */
+     transform: translateY(-12px);
+     transition: transform 0.18s ease;
+ }
+
+ .logo-area img {
+     width: 100px;
+     height: 100px;
+     object-fit: contain;
+     border-radius: 8px;
+ }
+
+ .school-name h3 {
+     font-size: 28px;
+     margin: 0;
+     color: #1a1a1a;
+     font-family: 'Hind Siliguri', sans-serif;
+ }
+
+
+ .school-name h2 {
+     font-size: 20px;
+     color: #444;
+     font-weight: 400;
+ }
+
+ /* Navigation */
+nav {
+    background: #ffffff;
+    position: relative;
+    box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04);
+    border-radius: 8px;
+    margin: 0 4px;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 4px;
+}
+
+.nav-container a {
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    position: relative;
+    font-family: 'Hind Siliguri', sans-serif;
+    transition: all 0.2s ease-in-out;
+    font-size: 15px;
+    letter-spacing: 0.2px;
+    border-radius: 6px;
+    margin: 2px 4px;
+}
+
+ /* Morphing background effect */
+ .nav-container a::after {
+     content: "";
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     width: 0;
+     height: 0;
+     background: radial-gradient(circle, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.02) 100%);
+     border-radius: 50%;
+     transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+     transform: translate(-50%, -50%);
+     z-index: -1;
+ }
+
+ /* Sliding underline */
+ .nav-container a::before {
+     content: "";
+     position: absolute;
+     bottom: 8px;
+     left: 50%;
+     width: 0;
+     height: 2px;
+     background: #000000;
+     transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+     transform: translateX(-50%);
+ }
+
+ .nav-container a:hover {
+     color: #000000;
+     transform: translateY(-2px) scale(1.02);
+     text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+ }
+
+ .nav-container a:hover::after {
+     width: 120%;
+     height: 120%;
+     opacity: 0.8;
+ }
+
+ .nav-container a:hover::before {
+     width: 70%;
+ }
+
+ /* Floating effect on active */
+ .nav-container a:active {
+     transform: translateY(1px) scale(0.98);
+ }
+
+
+
+ /* Mobile Menu */
+ .mobile-toggle {
+     display: none;
+     background: #ffffff;
+     border: 2px solid #000000;
+     color: #000000;
+     font-size: 18px;
+     padding: 12px 14px;
+     cursor: pointer;
+     position: absolute;
+     right: 15px;
+     top: 12px;
+     border-radius: 8px;
+     transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+     overflow: hidden;
+ }
+
+ .mobile-toggle::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: -100%;
+     width: 100%;
+     height: 100%;
+     background: #000000;
+     transition: all 0.4s ease;
+     z-index: -1;
+ }
+
+ .mobile-toggle:hover::before {
+     left: 0;
+ }
+
+ .mobile-toggle:hover {
+     color: #ffffff;
+     transform: scale(1.1);
+ }
+
+
+
+
+
+ /* Floating particles effect */
+
+
+ /* Demo content */
+ .demo-content {
+     padding: 80px 20px;
+     text-align: center;
+     color: #333;
+ }
+
+ .demo-content h1 {
+     font-size: 3rem;
+     margin-bottom: 20px;
+     color: #000000;
+     font-weight: 700;
+     animation: fadeInUp 1s ease-out;
+ }
+
+ .demo-content p {
+     font-size: 1.1rem;
+     color: #666;
+     animation: fadeInUp 1s ease-out 0.3s both;
+     max-width: 600px;
+     margin: 0 auto;
+ }
+
+ @keyframes fadeInUp {
+     from {
+         opacity: 0;
+         transform: translateY(30px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+
+ /* News Bar */
+ .news-bar {
+     background: #fff;
+     border-top: 1px solid #e0e0e0;
+     border-bottom: 1px solid #e0e0e0;
+     display: flex;
+     align-items: center;
+ }
+
+ .news-title {
+     background-image: url("../img/skyblue_background.jpeg");
+     color: black;
+     padding: 6px 15px;
+     flex-shrink: 0;
+ }
+
+ .news-text {
+     flex: 1;
+     padding: 6px 15px;
+     font-size: 18px;
+     color: #333;
+     white-space: nowrap;
+     overflow: hidden;
+     border-right: 2px solid #111;
+ }
+
+ /* Main Layout */
+ main {
+     display: flex;
+     gap: 20px;
+     max-width: 1200px;
+     margin: 20px auto;
+     align-items: flex-start;
+     /* ensures top alignment of slider and content */
+ }
+
+ /* Left Column */
+ .left-col {
+     flex: 2;
+     background: #fff;
+     padding: 0 10px;
+     display: flex;
+     flex-direction: column;
+ }
+
+ /* Image Slider */
+ .image-slider {
+     position: relative;
+     overflow: hidden;
+     border-radius: 12px;
+     margin-bottom: 20px;
+ }
+
+ .slider-container {
+     display: flex;
+     transition: transform 0.5s ease-in-out;
+ }
+
+ .slider-container img {
+     width: 100%;
+     height: 400px;
+     object-fit: cover;
+     flex-shrink: 0;
+     border-radius: 8px;
+ }
+
+ .image-caption {
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     padding: 12px 16px;
+     background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+     color: white;
+     font-size: 14px;
+ }
+
+ /* Navigation Buttons */
+ .slider-nav {
+     position: absolute;
+     top: 50%;
+     transform: translateY(-50%);
+     background: rgba(0, 0, 0, 0.5);
+     color: white;
+     border: none;
+     padding: 10px 15px;
+     cursor: pointer;
+     font-size: 18px;
+     border-radius: 50%;
+     transition: background 0.3s, transform 0.3s;
+ }
+
+ .slider-nav:hover {
+     background: rgba(0, 0, 0, 0.8);
+     transform: translateY(-50%) scale(1.1);
+ }
+
+ .prev {
+     left: 10px;
+ }
+
+ .next {
+     right: 10px;
+ }
+
+ /* Slider Dots */
+ .slider-dots {
+     text-align: center;
+     margin-top: 12px;
+ }
+
+ .dot {
+     height: 12px;
+     width: 12px;
+     margin: 0 5px;
+     background-color: #bbb;
+     border-radius: 50%;
+     display: inline-block;
+     cursor: pointer;
+     transition: background-color 0.3s;
+ }
+
+ .dot.active,
+ .dot:hover {
+     background-color: #717171;
+ }
+
+ /* Content Title */
+ .left-col h2 {
+     margin-top: 15px;
+     color: #a67c00;
+     font-size: 22px;
+ }
+
+ .title-underline {
+     border-top: 4px solid skyblue;
+     width: 60px;
+     margin: 5px 0 15px 0;
+ }
+
+ /* Paragraph */
+ .left-col p {
+     line-height: 1.7;
+     color: #555;
+     font-size: 15px;
+ }
+
+ /* Responsive */
+
+
+ .sidebar-container {
+     max-width: 400px;
+ }
+
+ .info-card {
+     margin-bottom: 12px;
+     background: white;
+     border: 1px solid #e5e5e5;
+     border-radius: 8px;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+ }
+
+ .card-title {
+     padding: 15px 18px;
+     background: url("../img/white-paper-texture-background.jpg") no-repeat center center / cover;
+     border-bottom: 1px solid #f0f0f0;
+     font-weight: 600;
+     color: #333;
+     border-radius: 8px 8px 0 0;
+ }
+
+
+ .card-details {
+     display: block;
+     padding: 15px 18px;
+     background: #fafafa;
+     border-radius: 0 0 8px 8px;
+ }
+
+ /* Notice Styles */
+ .notice-item {
+     padding: 10px 0;
+     border-bottom: 1px solid #eeeeee;
+ }
+
+ .notice-item:last-child {
+     border-bottom: none;
+ }
+
+ .notice-date {
+     font-weight: 600;
+     color: #555;
+     font-size: 13px;
+     margin-bottom: 5px;
+ }
+
+ .notice-text {
+     color: #666;
+     font-size: 14px;
+ }
+
+ /* Routine Styles */
+ .routine-grid {
+     display: grid;
+     grid-template-columns: 1fr 1fr 1fr;
+     gap: 8px;
+     font-size: 13px;
+ }
+
+ .routine-day {
+     font-weight: 600;
+     color: #444;
+     padding: 8px;
+     background: white;
+     border-radius: 4px;
+ }
+
+ .routine-time {
+     color: #666;
+     padding: 8px;
+     background: white;
+     border-radius: 4px;
+ }
+
+ .routine-subject {
+     color: #555;
+     padding: 8px;
+     background: white;
+     border-radius: 4px;
+     font-weight: 500;
+ }
+
+ /* Syllabus Styles */
+ .syllabus-list {
+     display: flex;
+     flex-direction: column;
+     gap: 8px;
+ }
+
+ .syllabus-grade {
+     padding: 12px 15px;
+     background: white;
+     border: 1px solid #e8e8e8;
+     border-radius: 6px;
+     color: #555;
+     font-weight: 500;
+     cursor: pointer;
+     transition: background 0.2s;
+ }
+
+ .syllabus-grade:hover {
+     background: #f5f5f5;
+ }
+
+ /* Exam Styles */
+ .exam-schedule {
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+ }
+
+ .exam-row {
+     display: grid;
+     grid-template-columns: 1fr 1fr 1fr;
+     gap: 10px;
+     padding: 10px;
+     background: white;
+     border-radius: 6px;
+     border: 1px solid #e8e8e8;
+ }
+
+ .exam-date {
+     font-weight: 600;
+     color: #444;
+     font-size: 13px;
+ }
+
+ .exam-subject {
+     color: #555;
+     font-size: 13px;
+ }
+
+ .exam-time {
+     color: #666;
+     font-size: 13px;
+ }
+
+ /* Result Styles */
+ .result-stats {
+     display: grid;
+     grid-template-columns: 1fr 1fr 1fr;
+     gap: 10px;
+ }
+
+ .result-item {
+     text-align: center;
+     padding: 15px 10px;
+     background: white;
+     border-radius: 8px;
+     border: 1px solid #e8e8e8;
+ }
+
+ .result-label {
+     font-size: 12px;
+     color: #666;
+     margin-bottom: 5px;
+ }
+
+ .result-number {
+     font-size: 18px;
+     font-weight: 700;
+     color: #333;
+ }
+
+ /* Calendar */
+ .calendar {
+     margin-top: 20px;
+     border: 1px solid #ccc;
+     background: white;
+     border-radius: 4px;
+     overflow: hidden;
+ }
+
+ .calendar-header {
+     background: white;
+     color: black;
+     padding: 10px;
+     text-align: center;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }
+
+ .calendar-nav {
+     background: none;
+     border: none;
+     color: black;
+     cursor: pointer;
+     font-size: 18px;
+     padding: 5px;
+ }
+
+ .calendar table {
+     width: 100%;
+     border-collapse: collapse;
+     text-align: center;
+ }
+
+ .calendar th,
+ .calendar td {
+     padding: 8px 4px;
+     border: 1px solid #ddd;
+     font-size: 14px;
+ }
+
+ .calendar th {
+     background: #eee;
+     font-weight: 600;
+ }
+
+ .calendar td.highlight {
+     background: #ffeb3b;
+     font-weight: bold;
+ }
+
+ .calendar td.today {
+     background: #4caf50;
+     color: white;
+     font-weight: bold;
+ }
+
+ /* Attendance Section */
+ .attendance-section {
+     background: white;
+     border-radius: 4px;
+     margin-top: 20px;
+     overflow: hidden;
+ }
+
+ .attendance-header {
+     background: #0d6efd;
+     color: white;
+     padding: 10px;
+     text-align: center;
+     font-weight: bold;
+ }
+
+ .attendance-item {
+     display: flex;
+     justify-content: space-between;
+     padding: 8px 15px;
+     border-bottom: 1px solid #eee;
+ }
+
+ .attendance-item:last-child {
+     border-bottom: none;
+ }
+
+ .attendance-label {
+     font-weight: 500;
+ }
+
+ .attendance-value {
+     font-weight: bold;
+     padding: 2px 8px;
+     border-radius: 3px;
+     color: white;
+ }
+
+ .total {
+     background: #ff9800;
+ }
+
+ .present {
+     background: #4caf50;
+ }
+
+ .absent {
+     background: #f44336;
+ }
+
+ /* Location Section */
+ .location-section {
+     background: white;
+     border-radius: 4px;
+     margin-top: 20px;
+     overflow: hidden;
+ }
+
+ .location-header {
+     background: white;
+     color: black;
+     padding: 10px;
+     text-align: center;
+     font-weight: bold;
+ }
+
+ .location-content {
+     padding: 15px;
+     text-align: center;
+ }
+
+ .map-placeholder {
+     width: 100%;
+     height: 150px;
+     background: #e0e0e0;
+     border-radius: 4px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: #666;
+     margin-bottom: 10px;
+ }
+
+ /* Visitors Counter */
+ .visitors-section {
+     background: white;
+     border-radius: 4px;
+     margin-top: 20px;
+     overflow: hidden;
+ }
+
+ .visitors-header {
+     background: #9c27b0;
+     color: white;
+     padding: 10px;
+     text-align: center;
+     font-weight: bold;
+ }
+
+ .visitors-content {
+     padding: 15px;
+     text-align: center;
+ }
+
+ .counter-display {
+     font-size: 24px;
+     font-weight: bold;
+     color: #9c27b0;
+     margin-bottom: 5px;
+ }
+
+ /* Footer */
+ footer {
+     background-color: #1a1a1a;
+     color: #ccc;
+     padding: 30px 50px;
+     display: flex;
+     justify-content: space-between;
+     flex-wrap: wrap;
+ }
+
+ .footer-left {
+
+     align-items: center;
+ }
+
+ .footer-left img {
+     width: 90px;
+     height: auto;
+     margin-right: 20px;
+ }
+
+ .footer-left p {
+     font-size: 12px;
+     color: #aaa;
+ }
+
+ .footer-middle {
+     flex: 1;
+     margin: 0 40px;
+ }
+
+ .footer-middle h3 {
+     color: yellow;
+     margin-bottom: 5px;
+ }
+
+ .footer-middle p {
+     margin: 3px 0;
+     font-size: 14px;
+     color: #ccc;
+ }
+
+ .footer-middle p strong {
+     color: #bbb;
+ }
+
+ .footer-right {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 40px;
+ }
+
+ .footer-menu {
+     list-style: none;
+     padding: 0;
+ }
+
+ .footer-menu li {
+     border-left: 3px solid #444;
+     padding-left: 10px;
+     margin-bottom: 8px;
+     font-size: 14px;
+     color: #ccc;
+ }
+
+ .footer-right img {
+     width: 120px;
+ }
+
+ /* Responsive */
+
+
+ .right-col {
+     flex: 1;
+ }
+
+ .slide-indicator {
+     display: flex;
+     justify-content: right;
+     align-items: center;
+     gap: 20px;
+ }
+
+ .slide-lines {
+     display: flex;
+     gap: 8px;
+ }
+
+ .slide-line {
+     width: 30px;
+     height: 2px;
+     background: #e0e0e0;
+     transition: all 0.3s ease;
+ }
+
+ .slide-line.active {
+     background: #333;
+     width: 40px;
+ }
+
+ .slide-counter {
+     color: #999;
+     font-size: 13px;
+     font-weight: 400;
+     letter-spacing: 1px;
+ }
+
+ .teacher-card {
+     width: 320px;
+     background: #ffffff;
+     border-radius: 12px;
+     text-align: center;
+
+     margin: 10px 1px 10px 25px;
+     box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.1);
+     overflow: hidden;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+ }
+
+ .teacher-card:hover {
+     transform: translateY(-6px);
+     box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
+ }
+
+ .teacher-card img {
+     width: 250px;
+     height: auto;
+     border-bottom: 1px solid #eee;
+ }
+
+ .teacher-info {
+     padding: 8px;
+     background-image: url("../img/skyblue_background.jpeg");
+ }
+
+ .teacher-info h3 {
+     margin: 0;
+     font-size: 20px;
+     font-weight: 600;
+     color: #222;
+ }
+
+ .teacher-info p {
+     font-size: 15px;
+     color: #666;
+ }

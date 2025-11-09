@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notice Board</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 40px;
+    }
+
+    .notice-board {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .notice-header {
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: black;
+      letter-spacing: 1px;
+    }
+
+    .notice-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .notice-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .notice-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .notice-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      background: url("https://cdn-icons-png.flaticon.com/512/1827/1827504.png") no-repeat center;
+      background-size: cover;
+    }
+
+    .notice-text h4 {
+      margin: 0;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .notice-text p {
+      margin: 5px 0 0;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .notice-date {
+      font-size: 13px;
+      color: #999;
+      margin-top: 4px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .pdf-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .pdf-btn img {
+      width: 26px;
+      height: 26px;
+    }
+
+    /* Popup PDF Viewer */
+    .pdf-viewer {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .pdf-content {
+      width: 80%;
+      height: 90%;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .pdf-content iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="notice-board">
+    <div class="notice-header"> <img src="img/mood-board.png" width="50px" style="vertical-align: middle; margin-right: 10px; margin-bottom: 18px;">Notice Board</div>
+
+    <!-- Notice 2 -->
+    <div class="notice-card">
+      <div class="notice-info">
+        <img src="img/approved.png" width="50px">
+        <div class="notice-text">
+          <h4>Exam Routine Published</h4>
+          <p>Final exam schedule for 2025 session is now available.</p>
+          <div class="notice-date">20-08-2025 | 10:45am</div>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button class="pdf-btn" onclick="openPDF('exam-routine.pdf')">
+          <img src="img/view.png" alt="View PDF" width="30px">
+        </button>
+        <a href="exam-routine.pdf" download class="pdf-btn">
+          <img src="img/download.png" alt="Download PDF" width="30px">
+        </a>
+      </div>
+    </div>
+
+    <!-- Notice 3 -->
+    <div class="notice-card">
+      <div class="notice-info">
+        <img src="img/approved.png" width="50px">
+        <div class="notice-text">
+          <h4>Class Routine Updated</h4>
+          <p>Updated routine for 2025 semester has been published.</p>
+          <div class="notice-date">15-08-2025 | 11:30am</div>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button class="pdf-btn" onclick="openPDF('exam-routine.pdf')">
+          <img src="img/view.png" alt="View PDF" width="30px">
+        </button>
+        <a href="exam-routine.pdf" download class="pdf-btn">
+          <img src="img/download.png" alt="Download PDF" width="30px">
+        </a>
+      </div>
+    </div>
+
+    <!-- Notice 4 -->
+    <div class="notice-card">
+      <div class="notice-info">
+        <img src="img/pdf.png" width="50px">
+        <div class="notice-text">
+          <h4>Holiday Notice</h4>
+          <p>School will remain closed on 21st February for International Mother Language Day.</p>
+          <div class="notice-date">10-02-2025 | 09:00am</div>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button class="pdf-btn" onclick="openPDF('holiday.pdf')">
+          <img src="img/view.png" alt="View PDF" width="30px">
+        </button>
+        <a href="holiday.pdf" download class="pdf-btn">
+          <img src="img/download.png" alt="Download PDF" width="30px">
+        </a>
+      </div>
+    </div>
+
+    <!-- Notice 5 -->
+    <div class="notice-card">
+      <div class="notice-info">
+          <img src="img/pdf.png" width="50px">
+        <div class="notice-text">
+          <h4>Result Published</h4>
+          <p>Final exam result for 2025 has been released.</p>
+          <div class="notice-date">25-08-2025 | 02:00pm</div>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button class="pdf-btn" onclick="openPDF('result.pdf')">
+          <img src="img/view.png" alt="View PDF" width="30px">
+        </button>
+        <a href="result.pdf" download class="pdf-btn">
+          <img src="img/download.png" alt="Download PDF" width="30px">
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PDF Viewer Modal -->
+  <div class="pdf-viewer" id="pdfViewer">
+    <div class="pdf-content">
+      <span class="close-btn" onclick="closePDF()">×</span>
+      <iframe id="pdfFrame"></iframe>
+    </div>
+  </div>
+
+  <script>
+    function openPDF(file) {
+      document.getElementById("pdfViewer").style.display = "flex";
+      document.getElementById("pdfFrame").src = file;
+    }
+    function closePDF() {
+      document.getElementById("pdfViewer").style.display = "none";
+      document.getElementById("pdfFrame").src = "";
+    }
+  </script>
+
+</body>
+</html>
