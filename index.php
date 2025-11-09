@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amar Campus - Educational Technology Solutions</title>
+    <title>Techshilpo - Educational Technology Solutions</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -928,7 +928,7 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">Amar Campus</div>
+                <div class="logo"><img src="https://techshilpo.com/logo/techshilpo.png" width="80" alt="Techshilpo Logo"></div>
                 <div class="nav-links">
                     <a href="#services">Services</a>
                     <a href="#features">Features</a>
@@ -1011,13 +1011,7 @@
                     </div>
                     <h3>Custom Websites</h3>
                     <p>Stunning, responsive websites designed specifically for educational institutions. Modern design with intuitive navigation and mobile-first approach.</p>
-                    <a href="#" class="service-link">
-                        Learn More
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
+                    
                 </div>
                 <div class="service-card reveal">
                     <div class="service-icon">
@@ -1029,13 +1023,7 @@
                     </div>
                     <h3>School Management System</h3>
                     <p>Comprehensive ERP solution for seamless management of students, staff, attendance, grades, and all institutional operations.</p>
-                    <a href="#" class="service-link">
-                        Learn More
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
+                    
                 </div>
                 <div class="service-card reveal">
                     <div class="service-icon">
@@ -1046,13 +1034,7 @@
                     </div>
                     <h3>Mobile Applications</h3>
                     <p>Native iOS and Android apps connecting students, teachers, and parents with real-time updates and seamless communication.</p>
-                    <a href="#" class="service-link">
-                        Learn More
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
+                    
                 </div>
                 <div class="service-card reveal">
                     <div class="service-icon">
@@ -1062,13 +1044,7 @@
                     </div>
                     <h3>Cloud Solutions</h3>
                     <p>Enterprise-grade cloud infrastructure ensuring 99.9% uptime, automatic backups, and secure data storage with global accessibility.</p>
-                    <a href="#" class="service-link">
-                        Learn More
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
+                    
                 </div>
                 <div class="service-card reveal">
                     <div class="service-icon">
@@ -1080,13 +1056,7 @@
                     </div>
                     <h3>Analytics & Reporting</h3>
                     <p>Powerful data visualization and insights tools to track performance metrics, identify trends, and make data-driven decisions.</p>
-                    <a href="#" class="service-link">
-                        Learn More
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
+                    
                 </div>
                 <div class="service-card reveal">
                     <div class="service-icon">
@@ -1096,13 +1066,7 @@
                     </div>
                     <h3>Security & Support</h3>
                     <p>Bank-level security with encryption, regular audits, and compliance. Round-the-clock technical support from our expert team.</p>
-                    <a href="#" class="service-link">
-                        Learn More
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
+                    
                 </div>
             </div>
         </div>
@@ -1151,7 +1115,7 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
+    <!-- Pricing Section 
     <section class="pricing" id="pricing">
         <div class="container">
             <div class="section-header reveal">
@@ -1207,9 +1171,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 
-    <!-- Testimonials Section -->
+    <!-- Testimonials Section 
     <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-header reveal">
@@ -1256,9 +1220,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 
-    <!-- CTA Section -->
+    <!-- CTA Section
     <section class="cta-section">
         <div class="container">
             <div class="cta-box reveal">
@@ -1286,34 +1250,16 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-section">
-                    <h3>Amar Campus</h3>
+                    <img src="https://techshilpo.com/logo/techshilpo.png" width="100" alt="Techshilpo Logo">
                     <p>Leading provider of digital transformation solutions for educational institutions. Empowering the future of education through innovative technology.</p>
-                    <div class="social-links">
-                        <a href="#">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </a>
-                        <a href="#">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                            </svg>
-                        </a>
-                        <a href="#">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                <rect x="2" y="9" width="4" height="12"></rect>
-                                <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                        </a>
-                    </div>
+                    
                 </div>
                 <div class="footer-section">
                     <h3>Services</h3>
@@ -1345,7 +1291,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Amar Campus. All rights reserved. Empowering Education Through Technology.</p>
+                <p>&copy; 2025 Techshilpo. All rights reserved. Empowering Education Through Technology.</p>
             </div>
         </div>
     </footer>
